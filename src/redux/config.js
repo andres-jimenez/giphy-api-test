@@ -7,6 +7,7 @@ const config = {
   search: {
     actions: {
       SET_QUERY: 'SET_QUERY',
+      RESET_QUERY: 'RESET_QUERY',
       SET_RESULTS: 'SET_RESULTS',
     },
   },

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setQuery } from 'redux/search/actions';
+import { resetQuery, setQuery } from 'redux/search/actions';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -12,9 +12,10 @@ const SearchBar = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onReset={() => dispatch(resetQuery())}>
         <input placeholder="Type something..." />
-        <button>Search</button>
+        <input type="submit" value="Search" />
+        <input type="reset" value="Reset" />
       </form>
     </>
   );
