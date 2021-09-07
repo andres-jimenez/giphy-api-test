@@ -1,5 +1,6 @@
 import Gif from 'components/Gif';
 import SearchBar from 'components/SearchBar';
+import TrendingSearches from 'components/TrendingSearches';
 import { GIPHY_API_KEY } from 'constants/index';
 import { useFetch } from 'hooks/useFetch';
 import { useEffect } from 'react';
@@ -28,6 +29,7 @@ const Search = () => {
       {searchResults.map(gif => (
         <Gif key={gif.id} src={gif.images.preview_gif.url} alt={gif.title} />
       ))}
+      <TrendingSearches />
     </>
   );
 };

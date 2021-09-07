@@ -2,6 +2,7 @@ const config = {
   trending: {
     actions: {
       SET_TRENDING_GIFS: 'SET_TRENDING_GIFS',
+      SET_TRENDING_SEARCHES: 'SET_TRENDING_SEARCHES',
     },
   },
   search: {
