@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTrendingGifs } from 'redux/giphy/actions';
+import { setTrendingGifs } from 'redux/trending/actions';
 import { useFetch } from 'hooks/useFetch';
 import { GIPHY_API_KEY } from 'constants/index';
 import Gif from 'components/Gif';
@@ -13,12 +13,10 @@ const TrendingGifs = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!pending) {
-      dispatch(setTrendingGifs(data));
-    }
+    if (!pending) dispatch(setTrendingGifs(data));
   }, [dispatch, data, pending]);
 
-  const trendingGifs = useSelector(state => state.giphy.trendingGifs);
+  const trendingGifs = useSelector(state => state.trending.gifs);
 
   return (
     <>

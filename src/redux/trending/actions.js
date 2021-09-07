@@ -1,6 +1,6 @@
 import config from 'redux/config';
 
-const { SET_TRENDING_GIFS } = config.giphy.actions;
+const { SET_TRENDING_GIFS } = config.trending.actions;
 
 export const setTrendingGifs = trendingGifs => {
   return {

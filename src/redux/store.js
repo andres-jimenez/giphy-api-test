@@ -1,7 +1,8 @@
 import { combineReducers, createStore } from 'redux';
-import { giphy } from 'redux/giphy/reducer';
+import { trending } from 'redux/trending/reducer';
+import { search } from 'redux/search/reducer';
 
-const reducers = combineReducers({ giphy });
+const reducers = combineReducers({ trending, search });
 
 const store = createStore(
   reducers,
