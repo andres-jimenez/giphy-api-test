@@ -21,7 +21,7 @@ const TrendingSearches = () => {
 
   return (
     <>
-      <h4>People are searching:</h4>
+      <h4>Most popular searches today:</h4>
       <StyledContainer>
         {trendingSearches.map(search => (
           <TrendingSearch key={search} text={search} />
