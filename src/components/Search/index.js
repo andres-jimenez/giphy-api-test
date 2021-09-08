@@ -1,24 +1,25 @@
 import Gif from 'components/Gif';
 import SearchBar from 'components/SearchBar';
 import TrendingSearches from 'components/TrendingSearches';
-import { GIPHY_API_KEY } from 'constants/index';
-import { useFetch } from 'hooks/useFetch';
+import { GIPHY_API_KEY } from 'App';
+import { fetchData } from 'helpers/fetchData';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setResults } from 'redux/search/actions';
 
 const Search = () => {
+  const dispatch = useDispatch();
   const searchQuery = useSelector(state => state.search.query);
 
-  const { data, pending } = useFetch(
-    `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${searchQuery}&limit=10`
-  );
-
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    if (!pending && data.length) dispatch(setResults(data));
-  }, [dispatch, data, pending]);
+    if (searchQuery) {
+      fetchData(
+        `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${searchQuery}&limit=10`,
+        setResults,
+        dispatch
+      );
+    }
+  }, [dispatch, searchQuery]);
 
   const searchResults = useSelector(state => state.search.results);
 
