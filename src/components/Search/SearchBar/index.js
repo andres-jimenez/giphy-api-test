@@ -2,6 +2,12 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetQuery, setQuery } from 'redux/search/actions';
+import {
+  SearchForm,
+  SearchInput,
+  ButtonsContainer,
+  SearchButton,
+} from './style';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,15 +31,20 @@ const SearchBar = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} onReset={() => dispatch(resetQuery())}>
-        <input
-          placeholder="Type something..."
+      <SearchForm
+        onSubmit={handleSubmit}
+        onReset={() => dispatch(resetQuery())}
+      >
+        <SearchInput
+          placeholder="Find a specific gif..."
           value={searchQuery}
           onChange={handleChange}
         />
-        <input type="submit" value="Search" />
-        <input type="reset" value="Reset" />
-      </form>
+        <ButtonsContainer>
+          <SearchButton type="reset" value="Reset" />
+          <SearchButton primary type="submit" value="Search" />
+        </ButtonsContainer>
+      </SearchForm>
     </>
   );
 };

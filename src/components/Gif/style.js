@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledGif = styled.img`
-  height: 10rem;
+  height: 8rem;
+  margin: 0.5rem;
   object-fit: cover;
-  width: 10rem;
+  width: 8rem;
 `;
