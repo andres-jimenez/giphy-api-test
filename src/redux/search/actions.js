@@ -1,4 +1,5 @@
 import config from 'redux/config';
+import { getResults } from 'services/giphy';
 
 const { SET_QUERY, RESET_QUERY, SET_RESULTS } = config.search.actions;
 
@@ -15,9 +16,13 @@ export const resetQuery = () => {
   };
 };
 
-export const setResults = results => {
-  return {
-    type: SET_RESULTS,
-    payload: results,
+export const setResults = query => {
+  return async dispatch => {
+    const results = await getResults(query);
+
+    dispatch({
+      type: SET_RESULTS,
+      payload: results,
+    });
   };
 };

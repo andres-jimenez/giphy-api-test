@@ -1,5 +1,3 @@
-import { GIPHY_API_KEY } from 'App';
-import { fetchData } from 'helpers/fetchData';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTrendingSearches } from 'redux/trending/actions';
@@ -10,11 +8,7 @@ const TrendingSearches = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData(
-      `https://api.giphy.com/v1/trending/searches?api_key=${GIPHY_API_KEY}`,
-      setTrendingSearches,
-      dispatch
-    );
+    dispatch(setTrendingSearches());
   }, [dispatch]);
 
   const trendingSearches = useSelector(state => state.trending.searches);

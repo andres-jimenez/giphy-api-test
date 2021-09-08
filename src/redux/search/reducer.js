@@ -9,11 +9,7 @@ export const search = (state = initialState, action) => {
     case SET_QUERY:
       return { ...state, query: action.payload };
     case RESET_QUERY:
-      return {
-        ...state,
-        query: initialState.query,
-        results: initialState.results,
-      };
+      return { query: '', results: [] };
     case SET_RESULTS:
       return { ...state, results: action.payload };
     default:

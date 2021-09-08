@@ -1,22 +1,19 @@
-export const fetchData = (endpoint, action, dispatch) => {
-  let data = undefined;
-  let pending = true;
+const fetchData = async endpoint => {
+  let data;
 
-  (async () => {
-    try {
-      const response = await fetch(endpoint);
-      const json = await response.json();
-      if (response.ok) {
-        data = json.data;
-        pending = false;
-      } else {
-        throw new Error(json.message);
-      }
-    } catch (error) {
-      pending = false;
-      console.log('Error: ' + error.message);
+  try {
+    const response = await fetch(endpoint);
+    const json = await response.json();
+    if (response.ok) {
+      data = json.data;
+    } else {
+      throw new Error(json.message);
     }
+  } catch (error) {
+    console.log('Error: ' + error.message);
+  }
 
-    !pending && dispatch(action(data));
-  })();
+  return data;
 };
+
+export default fetchData;
